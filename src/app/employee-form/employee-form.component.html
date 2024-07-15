@@ -1,0 +1,93 @@
+<div class="flex flex-col justify-center w-full">
+  @if(alert){
+  <div class="alert alert-warning" role="alert">
+    {{ alert }}
+  </div>
+
+  }
+  <form [formGroup]="form">
+    <div class="input-group mb-2">
+      <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-2">
+      <span class="input-group-text" id="inputGroup-sizing-default">Idade</span>
+      <input
+        formControlName="age"
+        type="number"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-2">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Cidade</span
+      >
+      <input
+        type="text"
+        formControlName="city"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+  </form>
+
+  <div class="flex gap-2 justify-center">
+    @if(hasEmployee()){
+    <button
+      (click)="updateEmployee(getFormValues())"
+      type="button"
+      class="btn btn-primary active"
+      data-bs-toggle="button"
+      aria-pressed="true"
+    >
+      Alterar
+    </button>
+    <button
+      type="button"
+      (click)="removeEmployee(form.value.id || 0)"
+      class="btn btn-primary active"
+      data-bs-toggle="button"
+      aria-pressed="true"
+    >
+      Remover
+    </button>
+
+    <button
+      (click)="clearForm()"
+      type="button"
+      class="btn btn-danger active"
+      data-bs-toggle="button"
+      aria-pressed="true"
+    >
+      Cancelar
+    </button>
+    }@else{
+    <button
+      (click)="submitForm()"
+      type="button"
+      class="btn btn-primary active"
+      data-bs-toggle="button"
+    >
+      Cadastrar
+    </button>
+    <button
+      type="button"
+      (click)="clearForm()"
+      class="btn btn-danger active"
+      data-bs-toggle="button"
+      aria-pressed="true"
+    >
+      Limpar
+    </button>
+    }
+  </div>
+</div>

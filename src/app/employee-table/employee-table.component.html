@@ -1,0 +1,29 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of employees; track $index) {
+
+    <tr>
+      <th scope="row">{{ item.name }}</th>
+      <td>{{ item.age }}</td>
+      <td>{{ item.city }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="selectEmployee(item.id)"
+        >
+          Selecionar
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
